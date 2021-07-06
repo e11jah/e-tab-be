@@ -1,0 +1,12 @@
+type Request {
+	Name string `path:"name,options=you|me"`
+}
+
+type Response {
+	Message string `json:"message"`
+}
+
+service e_tab_be-api {
+	@handler E_tab_beHandler
+	get /from/:name(Request) returns (Response);
+}
