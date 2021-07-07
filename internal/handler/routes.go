@@ -13,9 +13,9 @@ func RegisterHandlers(engine *rest.Server, serverCtx *svc.ServiceContext) {
 	engine.AddRoutes(
 		[]rest.Route{
 			{
-				Method:  http.MethodGet,
-				Path:    "/from/:name",
-				Handler: Handler(serverCtx),
+				Method:  http.MethodPost,
+				Path:    "/tabs/upload",
+				Handler: TabHandler(serverCtx),
 			},
 		},
 	)

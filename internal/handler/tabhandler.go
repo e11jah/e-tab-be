@@ -10,7 +10,7 @@ import (
 	"github.com/tal-tech/go-zero/rest/httpx"
 )
 
-func Handler(ctx *svc.ServiceContext) http.HandlerFunc {
+func TabHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req types.Request
 		if err := httpx.Parse(r, &req); err != nil {
@@ -18,8 +18,8 @@ func Handler(ctx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := logic.NewLogic(r.Context(), ctx)
-		resp, err := l.Be(req)
+		l := logic.NewTabLogic(r.Context(), ctx)
+		resp, err := l.SaveTabs(req)
 		if err != nil {
 			httpx.Error(w, err)
 		} else {

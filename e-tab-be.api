@@ -1,12 +1,19 @@
+syntax = "v1"
+
+type Tab {
+	Url   string `json:"url"`
+	Title string `json:"title"`
+}
+
 type Request {
-	Name string `path:"name,options=you|me"`
+	Tabs []*Tab `json:"tabs"`
 }
 
 type Response {
 	Message string `json:"message"`
 }
 
-service e_tab_be-api {
-	@handler E_tab_beHandler
-	get /from/:name(Request) returns (Response);
+service tab-api {
+	@handler TabHandler
+	post /tabs/upload(Request) returns (Response);
 }
